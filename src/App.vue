@@ -1,3 +1,4 @@
+
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="info">
@@ -29,14 +30,14 @@
 <script>
 export default {
   name: "App",
-  methods: {
-    Logout() {
-      this.$root.store.logout();
-      this.$root.toast("Logout", "User logged out successfully", "success");
+  methods:{
+  Logout() {
+    this.$root.store.logout();
+    this.$root.toast("Logout", "User logged out successfully", "success");
 
-      this.$router.push("/").catch(() => {
-        this.$forceUpdate();
-      });
+    this.$router.push("/").catch(() => {
+      this.$forceUpdate();
+    });
     }
   }
 };
