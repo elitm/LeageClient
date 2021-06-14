@@ -294,10 +294,15 @@ export default {
     async Register() {
       try {
         const response = await this.axios.post(
-          "http://test-for-3-2.herokuapp.com/user/Register",
+          "http://localhost:3003/Register",
           {
             username: this.form.username,
-            password: this.form.password
+            firstname: this.form.firstName,
+            lastname: this.form.lastName,
+            country: this.form.country,
+            password: this.form.password,
+            email: this.form.email,
+            imageurl: this.form.imageUrl
           }
         );
         this.$router.push("/login");
