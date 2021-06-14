@@ -8,6 +8,9 @@
       <li> guest: {{ guestTeam }}</li>
       <li> date: {{ date }}</li>
       <li> time: {{ hour }}</li>
+      <li v-if="!(hostTeamScore == undefined || hostTeamScore == null)"> host score: {{ hostTeamScore }}</li> 
+      <li v-if="!(guestTeamScore == undefined || guestTeamScore == null)"> guest score: {{ guestTeamScore }}</li>
+      <li> field: {{ field }}</li>
     </ul>
   </div>
 </template>
@@ -35,6 +38,15 @@ export default {
       hour: {
         type: String,
         required: true
+      },
+      hostTeamScore: {
+        type: Number
+      },
+      guestTeamScore: {
+        type: Number  
+      },
+      field: {
+        type: String
       }
   }, 
   mounted(){

@@ -12,11 +12,14 @@
         <br/>
         Stage: {{ stage }}
         <b-card-text>
-          Next Game: <GamePreview 
+        Next Game: <GamePreview 
           :hostTeam="nextGame.local_team" 
           :guestTeam="nextGame.visitor_team" 
-          :date="nextGame.game_date" 
-          ></GamePreview>
+          :date="nextGame.game_date.split('T')[0]" 
+          :hour="nextGame.game_date.split('T')[1].substring(0,5)"
+          :field="nextGame.field"
+
+        ></GamePreview>
         </b-card-text>
       </b-card-text>
       <b-button href="#" variant="primary">Go somewhere</b-button>
@@ -51,7 +54,6 @@ export default {
         this.season = response.data.current_season_name;
         this.stage = response.data.current_stage_name;
         this.nextGame = response.data.next_game[0];
-        console.log(this.nextGame);
       }
       catch (error) {
         console.log("error in league info")
