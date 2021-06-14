@@ -11,6 +11,13 @@
         Season: {{ season }}
         <br/>
         Stage: {{ stage }}
+        <b-card-text>
+          Next Game: <GamePreview 
+          :hostTeam="nextGame.local_team" 
+          :guestTeam="nextGame.visitor_team" 
+          :date="nextGame.game_date" 
+          ></GamePreview>
+        </b-card-text>
       </b-card-text>
       <b-button href="#" variant="primary">Go somewhere</b-button>
     </b-card>
@@ -18,15 +25,43 @@
 </template>
 
 <script>
+import GamePreview from "./GamePreview.vue";
 export default {
+    name: "LeagueInfo",
+    components: {
+    GamePreview
+  }, 
  data() {
     return {
-      leagueName: "superliga", 
-      season: "season", 
-      stage: "stage"
+      leagueName: "", 
+      season: "", 
+      stage: "",
+      nextGame: {}
     };
   },
-}
+  methods:{
+    async LeagueDetails(){
+      try{
+        console.log("league Info From Server");
+        this.axios.defaults.withCredentials = true;
+            const response = await this.axios.get(
+            "http://localhost:3003/league/getDetails",);
+
+        this.leagueName = response.data.league_name;
+        this.season = response.data.current_season_name;
+        this.stage = response.data.current_stage_name;
+        this.nextGame = response.data.next_game[0];
+        console.log(this.nextGame);
+      }
+      catch (error) {
+        console.log("error in league info")
+        console.log(error);
+    }
+  }},
+  mounted(){
+    this.LeagueDetails(); 
+     }
+};
 </script>
 
 <style>
