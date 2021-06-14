@@ -3,11 +3,12 @@
     <div :title="name" class="player-title">
       <b>{{ name }}</b> 
     </div >
-    <ul class="player-content">
-    <img src=imageUrl>
-    <li> position: {{ position }} </li>
+    <div class="player-content">
+    <img :src= imageUrl >
+    <!-- <p> {{ imageUrl}} </p> -->
+    <p> position: {{ position }} </p>
     <!-- <p> teamName: {{ teamName }} </p>  -->
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -40,8 +41,8 @@ export default {
 <style>
 .player-preview {
   display: inline-block;
-  width: 250px;
-  height: 200px;
+  width: 275px;
+  height: 250px;
   position: relative;
   margin: 10px 10px;
   border-style: solid;
