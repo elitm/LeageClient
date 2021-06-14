@@ -13,6 +13,18 @@
             Image: {{image}}
             <br/>
             Position Number: {{position}}
+            <br/>
+            Common Name: {{common_name}}
+            <br/>
+            Nationality: {{nationality}}
+            <br/>
+            Birthday: {{birthday}}
+            <br/>
+            Birth Country: {{birthcountry}}
+            <br/>
+            Height: {{height}}
+            <br/>
+            Weight: {{weight}}
         </b-card-text>
     </b-card>
     </div>
@@ -26,7 +38,13 @@
                 name: "",
                 team_name:"",
                 image:"",
-                position: ""
+                position: "",
+                common_name:"",
+                nationality:"",
+                birthday:"",
+                birthcountry:"",
+                height:"",
+                weight:""
             };
         },
       methods:{
@@ -40,6 +58,12 @@
                 this.team_name = response.data[0].team_name;
                 this.image = response.data[0].image;
                 this.position = response.data[0].position;
+                this.common_name = response.data[0].common_name,
+                this.nationality = response.data[0].nationality,
+                this.birthday = response.data[0].birthday,
+                this.birthcountry = response.data[0].birthcountry,
+                this.height = response.data[0].height,
+                this.weight = response.data[0].weight
                 console.log(this.position)
               }catch(error){
                   console.log(error);
