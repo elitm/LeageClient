@@ -103,11 +103,15 @@
           Your password should be <strong>strong</strong>. <br />
           For that, your password should be also:
         </b-form-text>
-        <b-form-invalid-feedback
+          <b-form-invalid-feedback
           v-if="$v.form.password.required && !$v.form.password.length"
-        >
-          Have length between 5-10 characters long
-        </b-form-invalid-feedback>
+        >must be between 5-10 characters long</b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && !$v.form.password.ContainsNumber"
+        >must contains at least 1 numeric character</b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-if="$v.form.password.required && !$v.form.password.ContainsSpecialChar"
+        >must contains at least one special character</b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
@@ -126,8 +130,7 @@
           Password confirmation is required
         </b-form-invalid-feedback>
         <b-form-invalid-feedback
-          v-else-if="!$v.form.confirmedPassword.sameAsPassword"
-        >
+          v-else-if="!$v.form.confirmedPassword.sameAsPassword">
           The confirmed password is not equal to the original password
         </b-form-invalid-feedback>
       </b-form-group>
@@ -204,6 +207,16 @@
 
 <script>
 import countries from "../assets/countries";
+
+const ContainsNumber = (value) => {
+  const oneNumericChar = new RegExp("(?=.*[0-9])");
+  return oneNumericChar.test(value);
+};
+const ContainsSpecialChar = (value) => {
+  const oneSpecialChar = new RegExp("(?=.*[!@#$%^&*])");
+  return oneSpecialChar.test(value);
+};
+
 import {
   required,
   minLength,
@@ -251,7 +264,9 @@ export default {
       },
       password: {
         required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p)
+        length: (p) => minLength(5)(p) && maxLength(10)(p),
+        ContainsNumber,
+        ContainsSpecialChar
       },
       confirmedPassword: {
         required,
@@ -279,7 +294,7 @@ export default {
     async Register() {
       try {
         const response = await this.axios.post(
-          "https://test-for-3-2.herokuapp.com/user/Register",
+          "http://test-for-3-2.herokuapp.com/user/Register",
           {
             username: this.form.username,
             password: this.form.password
