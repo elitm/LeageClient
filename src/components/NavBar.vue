@@ -4,7 +4,7 @@
       <b-navbar class="navbar navbar-light" style="background-color: #e6e6e6;">
         <b-navbar-brand>
           <img
-            src="https://lh3.googleusercontent.com/proxy/QZ8dEJaAZk5qqXZqn8EPyBh4a26q7bCrwf9NEZwnNqMV3_4cXqzb7jVEHqZ2bWu-Nm1g41wEGc8lERPYSn_1MEvO6cU7X38"
+            src="../assets/soccer.png"
             width="90"
             height="80"
             alt
@@ -33,13 +33,10 @@
         </span>
         <span v-else>
           <b-dropdown id="dropdown-1"  text="My Profile" class="mr-3" variant="light" >
-            <b-dropdown-item :to="{ name: 'myFavoriteGames' }">My Favorite Games</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'FavoriteGames' }">My Favorite Games</b-dropdown-item>
             <b-dropdown-item class="btn navB" @click="Logout">Logout</b-dropdown-item>
           </b-dropdown>
          <B>Hello {{ $root.store.username }}</B>
-          
-
-          <CreateRecipe />
           
         </span>
       </b-navbar>
@@ -49,17 +46,26 @@
 </template>
 
 <script>
-    export default {
+  export default {
+    components:{
+    },
     methods:{
-       Logout() {
+        Logout() {
+        console.log("try to logging out");
+        const response = this.logoutFromServer();
+        response.withCredentials = true;
         this.$root.store.logout();
         this.$root.toast("Logout", "User logged out successfully", "success");
-
         this.$router.push("/").catch(() => {
         this.$forceUpdate();
         });
-        }   
-    }};
+    }, 
+      async logoutFromServer(){
+            await this.axios.get(
+            "http://localhost:3003/logout",
+        );
+    }  
+  }};
 </script>
 
 <style lang="scss" scoped>
