@@ -26,6 +26,48 @@
       </b-form-group>
 
       <b-form-group
+        id="input-group-firstName"
+        label-cols-sm="3"
+        label="First Name:"
+        label-for="firstName"
+      >
+        <b-form-input
+          id="firstName"
+          v-model="$v.form.firstName.$model"
+          type="text"
+          :state="validateState('firstName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+          First Name is required
+        </b-form-invalid-feedback>
+        <!-- <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+          firstName alpha
+        </b-form-invalid-feedback> -->
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-lastName"
+        label-cols-sm="3"
+        label="Last Name:"
+        label-for="lastName"
+      >
+        <b-form-input
+          id="lastName"
+          v-model="$v.form.lastName.$model"
+          type="text"
+          :state="validateState('lastName')"
+
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+          Last Name is required
+        </b-form-invalid-feedback>
+        <!-- <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+          lastName alpha
+        </b-form-invalid-feedback> -->
+      </b-form-group>
+
+
+      <b-form-group
         id="input-group-country"
         label-cols-sm="3"
         label="Country:"
@@ -90,6 +132,47 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
+      <b-form-group
+        id="input-group-email"
+        label-cols-sm="3"
+        label="Email:"
+        label-for="email"
+         >
+        <b-form-input
+          id="email"
+          v-model="$v.form.email.$model"
+          type="text"
+          :state="validateState('email')"     
+
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.email.required">
+          email is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-else-if="!$v.form.email.email"
+        >
+          Please enter correct email
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-imageUrl"
+        label-cols-sm="3"
+        label="ImageUrl"
+        label-for="imageUrl"
+      >
+        <b-form-input
+          id="imageUrl"
+          v-model="$v.form.imageUrl.$model"
+          type="text"
+          :state="validateState('imageUrl')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.imageUrl.required">
+          ImageUrl is required
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
         type="submit"
@@ -142,6 +225,7 @@ export default {
         password: "",
         confirmedPassword: "",
         email: "",
+        imageUrl: "",
         submitError: undefined
       },
       countries: [{ value: null, text: "", disabled: true }],
@@ -159,6 +243,12 @@ export default {
       country: {
         required
       },
+      firstName: {
+        required
+      },
+      lastName: {
+        required
+      },
       password: {
         required,
         length: (p) => minLength(5)(p) && maxLength(10)(p)
@@ -166,6 +256,13 @@ export default {
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")
+      },
+      email: {
+        required,
+        email
+      },
+      imageUrl: {
+        required
       }
     }
   },
@@ -212,7 +309,8 @@ export default {
         country: null,
         password: "",
         confirmedPassword: "",
-        email: ""
+        email: "",
+        imageUrl: ""
       };
       this.$nextTick(() => {
         this.$v.$reset();
