@@ -7,7 +7,7 @@
       class="mb-2"
     >
       <b-card-title>{{leagueName}}</b-card-title>
-      <b-card-text>
+      <b-card-text> 
         Season: {{ season }}
         <br/>
         Stage: {{ stage }}

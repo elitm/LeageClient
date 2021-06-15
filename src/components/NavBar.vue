@@ -52,21 +52,29 @@
     components:{
     },
     methods:{
-        Logout() {
+        async Logout() {
         console.log("try to logging out");
-        const response = this.logoutFromServer();
-        response.withCredentials = true;
-        this.$root.store.logout();
-        this.$root.toast("Logout", "User logged out successfully", "success");
-        this.$router.push("/").catch(() => {
-        this.$forceUpdate();
-        });
+        try{
+          const response = await this.axios.post(
+            "http://localhost:3003/logout",{withCredentials:true});
+
+          this.$root.store.logout();
+          this.$root.toast("Logout", "User logged out successfully", "success");
+          this.$router.push("/").catch(() => {
+          this.$forceUpdate();
+          });
+        }
+        catch(error){
+          console.log("error in logout")
+          console.log(error)
+        }
     }, 
       async logoutFromServer(){
             await this.axios.post(
             "http://localhost:3003/logout",
         );
     }  
+
   }};
 </script>
 
