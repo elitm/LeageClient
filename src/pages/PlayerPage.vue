@@ -1,14 +1,14 @@
 <template>
     <div>
-        <Player></Player>
+        <playerFullDetails></playerFullDetails>
     </div>
 </template>
 
 <script>
-    import Player from "../components/PlayerFullDetails.vue"
+    import playerFullDetails from "../components/PlayerFullDetails.vue"
     export default {
       components:{
-          Player
+          playerFullDetails
       }  
     };
 </script>

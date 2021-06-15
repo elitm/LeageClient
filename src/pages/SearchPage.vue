@@ -4,7 +4,7 @@
     <b-input-group prepend="Search Query:" id="search-input">
       <b-form-input v-model="searchQuery"></b-form-input>
       <b-input-group-append>
-        <b-button variant="success">Search</b-button>
+        <b-button variant="success" >Search</b-button>
       </b-input-group-append>
     </b-input-group>
       <br/>
@@ -14,11 +14,14 @@
 
 <script>
 export default {
- data() {
+  data() {
     return {
-      searchQuery:""
+      searchQuery:"",
     };
   },
+  methods: {
+    
+  }
 }
 </script>
 

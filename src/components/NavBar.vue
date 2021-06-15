@@ -13,7 +13,7 @@
 
         <!-- <Navigator /> -->
         <button class="btn navB" type="button">
-          <router-link :to="{ name: 'main' }">Home Page</router-link>
+          <router-link :to="{ name: 'main' }">Home</router-link>
         </button>
         <button class="btn navB" type="button">
           <router-link :to="{ name: 'search' }">Search</router-link>
@@ -21,11 +21,12 @@
         <button class="btn navB" type="button">
           <router-link :to="{ name: 'about' }">About</router-link>
         </button>
+        <b-navbar-nav class="navbar-nav ml-auto">
         <span v-if="!$root.store.username">
+            <B>Hello Guest</B>
           <button class="btn navB" type="button">
             <router-link :to="{ name: 'register' }">Register</router-link>
           </button>
-          <B>Hello Guest</B>
           <button class="btn navB" type="button">
             <router-link :to="{ name: 'login' }">Login</router-link>
           </button>
@@ -39,6 +40,7 @@
          <B>Hello {{ $root.store.username }}</B>
           
         </span>
+        </b-navbar-nav>
       </b-navbar>
     </div>
     <router-view />
@@ -61,7 +63,7 @@
         });
     }, 
       async logoutFromServer(){
-            await this.axios.get(
+            await this.axios.post(
             "http://localhost:3003/logout",
         );
     }  

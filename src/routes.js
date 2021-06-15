@@ -47,6 +47,11 @@ const routes = [
     name: "teamFullDetails",
     component: () => import("./pages/TeamPage")
   },
+  {
+    path:"/playerFullDetails",
+    name: "playerFullDetails",
+    component: () => import("./pages/PlayerPage")
+  },
 
   {
     path: "*",

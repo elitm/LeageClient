@@ -6,11 +6,10 @@
         style="max-width: 30rem;"
         class="mb-2"
         >
-        <b-card-title>Full Name: {{name}}</b-card-title>
+        <b-card-title>{{name}}<img :src=image>
+            <br/></b-card-title>
         <b-card-text>
             Group: {{team_name}}
-            <br/>
-            Image: {{image}}
             <br/>
             Position Number: {{position}}
             <br/>

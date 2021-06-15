@@ -1,6 +1,7 @@
 <template>
   <div class="player-preview">
     <div :title="name" class="player-title">
+       <!-- <router-link :to="{ name: '' }"> </router-link> -->
       <b>{{ name }}</b> 
     </div >
     <div class="player-content">
