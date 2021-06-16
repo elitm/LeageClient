@@ -1,16 +1,20 @@
 <template>
     <div>
-        <Player></Player>
+        <playerFullDetails></playerFullDetails>
     </div>
 </template>
 
 <script>
-    import Player from "../components/PlayerFullDetails.vue"
+    import playerFullDetails from "../components/PlayerFullDetails.vue"
     export default {
       components:{
-          Player
-      }  
+          playerFullDetails
+      } ,
+      mounted(){
+    // console.log(this.$route)
+    }
     };
+
 </script>
 
 <style lang="scss" scoped>

@@ -6,11 +6,10 @@
         style="max-width: 30rem;"
         class="mb-2"
         >
-        <b-card-title>Full Name: {{name}}</b-card-title>
+        <b-card-title>{{name}}<img :src=image>
+            <br/></b-card-title>
         <b-card-text>
-            Group: {{team_name}}
-            <br/>
-            Image: {{image}}
+            Team: {{team_name}}
             <br/>
             Position Number: {{position}}
             <br/>
@@ -48,9 +47,8 @@
             };
         },
       methods:{
-          async getPlayer(){
-              let playerID = 1;
-              console.log("uploadPlayer");
+          async getPlayer(playerID){
+              console.log(playerID);
               try{
                 const response = await this.axios.get(
                     `http://localhost:3003/players/PlayerFullDetails/${playerID}`,);
@@ -64,14 +62,14 @@
                 this.birthcountry = response.data[0].birthcountry,
                 this.height = response.data[0].height,
                 this.weight = response.data[0].weight
-                console.log(this.position)
               }catch(error){
                   console.log(error);
               }
           }
     },
      mounted(){
-         this.getPlayer();
+         console.log("player full details get param");
+         this.getPlayer(this.$route.params.id);
      }
 };
 </script>

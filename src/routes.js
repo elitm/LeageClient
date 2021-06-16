@@ -28,7 +28,7 @@ const routes = [
     component: () => import("./pages/AboutPage")
   },
   {
-    path: "/player",
+    path: "/player/:id",
     name: "player",
     component: () => import("./pages/PlayerPage")
   },
@@ -46,6 +46,11 @@ const routes = [
     path:"/teamFullDetails",
     name: "teamFullDetails",
     component: () => import("./pages/TeamPage")
+  },
+  {
+    path:"/playerFullDetails",
+    name: "playerFullDetails",
+    component: () => import("./pages/PlayerPage")
   },
 
   {

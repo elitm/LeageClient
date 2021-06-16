@@ -1,7 +1,9 @@
 <template>
   <div class="player-preview">
     <div :title="name" class="player-title">
-      <b>{{ name }}</b> 
+       <router-link :to="{ name: 'player' , params: {id: `${this.playerId}`}}">
+          <b>{{ name }}</b> 
+       </router-link>
     </div >
     <div class="player-content">
     <img :src= imageUrl >
@@ -16,6 +18,10 @@
 export default {
   name: "PlayerPreview",
   props: {
+      playerId: {
+        type: Number,
+        required: true
+      },
       name: {
         type: String,
         required: true

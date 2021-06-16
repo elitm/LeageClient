@@ -13,7 +13,7 @@
 
         <!-- <Navigator /> -->
         <button class="btn navB" type="button">
-          <router-link :to="{ name: 'main' }">Home Page</router-link>
+          <router-link :to="{ name: 'main' }">Home</router-link>
         </button>
         <button class="btn navB" type="button">
           <router-link :to="{ name: 'search' }">Search</router-link>
@@ -21,11 +21,12 @@
         <button class="btn navB" type="button">
           <router-link :to="{ name: 'about' }">About</router-link>
         </button>
+        <b-navbar-nav class="navbar-nav ml-auto">
         <span v-if="!$root.store.username">
+            <B>Hello Guest</B>
           <button class="btn navB" type="button">
             <router-link :to="{ name: 'register' }">Register</router-link>
           </button>
-          <B>Hello Guest</B>
           <button class="btn navB" type="button">
             <router-link :to="{ name: 'login' }">Login</router-link>
           </button>
@@ -33,12 +34,13 @@
         </span>
         <span v-else>
           <b-dropdown id="dropdown-1"  text="My Profile" class="mr-3" variant="light" >
-            <b-dropdown-item :to="{ name: 'FavoriteGames' }">My Favorite Games</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'favoriteGames' }">My Favorite Games</b-dropdown-item>
             <b-dropdown-item class="btn navB" @click="Logout">Logout</b-dropdown-item>
           </b-dropdown>
          <B>Hello {{ $root.store.username }}</B>
           
         </span>
+        </b-navbar-nav>
       </b-navbar>
     </div>
     <router-view />
@@ -67,6 +69,11 @@
           console.log(error)
         }
     }, 
+      async logoutFromServer(){
+            await this.axios.post(
+            "http://localhost:3003/logout",
+        );
+    }  
 
   }};
 </script>

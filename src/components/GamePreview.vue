@@ -21,7 +21,7 @@ export default {
   props: {
       id: {
         type: Number,
-        required: true
+        // required: true
       },
       hostTeam: {
         type: String,

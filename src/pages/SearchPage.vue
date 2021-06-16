@@ -7,9 +7,9 @@
 <script>
 import search from "../components/search.vue"
 export default {
- data() {
+  data() {
     return {
-      searchQuery:""
+      searchQuery:"",
     };
   },
   components:{
