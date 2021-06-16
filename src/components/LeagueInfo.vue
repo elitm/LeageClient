@@ -9,18 +9,19 @@
       <b-card-title>{{leagueName}}</b-card-title>
       <b-card-text> 
         Season: {{ season }}
-        <br/>
+        <br>
         Stage: {{ stage }}
-        <b-card-text>
+        <br>
         Next Game: <GamePreview 
+          :id="nextGame.game_id"
           :hostTeam="nextGame.local_team" 
           :guestTeam="nextGame.visitor_team" 
-          :date="nextGame.game_date.split('T')[0]" 
-          :hour="nextGame.game_date.split('T')[1].substring(0,5)"
+          :hostId="nextGame.local_team_id"
+          :guestId="nextGame.visitor_team_id"
+          :date="nextGame.game_date" 
+          :hour="nextGame.game_date"
           :field="nextGame.field"
-
         ></GamePreview>
-        </b-card-text>
       </b-card-text>
       <b-button href="#" variant="primary">Go somewhere</b-button>
     </b-card>
@@ -61,7 +62,7 @@ export default {
     }
   }},
   mounted(){
-    this.LeagueDetails(); 
+    this.LeagueDetails();
      }
 };
 </script>

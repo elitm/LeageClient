@@ -3,7 +3,7 @@
     <div :title="teamName" class="team-title">
       <b>{{ teamName }}</b> 
     </div >
-    <br>
+    <br>  
    Players:
        <br>
         <PlayerPreview
@@ -23,8 +23,10 @@
             :id="g.game_id" 
             :hostTeam="g.local_team" 
             :guestTeam="g.visitor_team" 
-            :date="g.game_date.split('T')[0]" 
-            :hour="g.game_date.split('T')[1].substring(0,5)"
+            :hostId="g.local_team_id"
+            :guestId="g.visitor_team_id"
+            :date="g.game_date" 
+            :hour="g.game_date"
             :hostTeamScore="g.local_team_score"
             :guestTeamScore="g.visitor_team_score"
             :field="g.field"
@@ -38,10 +40,10 @@
             :id="g.game_id" 
             :hostTeam="g.local_team" 
             :guestTeam="g.visitor_team" 
-            :date="g.game_date.split('T')[0]" 
-            :hour="g.game_date.split('T')[1].substring(0,5)"
-            :hostTeamScore="g.local_team_score"
-            :guestTeamScore="g.visitor_team_score"
+            :hostId="g.local_team_id"
+            :guestId="g.visitor_team_id"
+            :date="g.game_date" 
+            :hour="g.game_date"
             :field="g.field"
             :key="g.game_id">
         </GamePreview>
@@ -66,13 +68,12 @@ export default {
     };
   },
   methods:{
-    async TeamDetails(){
-      let teamNumber = 85;
+    async TeamDetails(teamID){
       try{
         console.log("team Info From Server");
         // this.axios.defaults.withCredentials = true;
             const response = await this.axios.get(
-            `http://localhost:3003/teams/teamFullDetails/${teamNumber}`,);
+            `http://localhost:3003/teams/teamFullDetails/${teamID}`,);
  
         const players = response.data[0];
         this.players = [];
@@ -101,7 +102,8 @@ export default {
     }
   }},
   mounted(){
-    this.TeamDetails(); 
+    console.log("team details with param")
+    this.TeamDetails(this.$route.params.id); 
      }
 };
 </script>

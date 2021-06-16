@@ -4,13 +4,28 @@
       <b>Game Id:</b> {{ id }}
     </div>
     <ul class="game-content">
-      <li> host: {{ hostTeam }}</li>
-      <li> guest: {{ guestTeam }}</li>
-      <li> date: {{ date }}</li>
-      <li> time: {{ hour }}</li>
-      <li v-if="!(hostTeamScore == undefined || hostTeamScore == null)"> host score: {{ hostTeamScore }}</li> 
-      <li v-if="!(guestTeamScore == undefined || guestTeamScore == null)"> guest score: {{ guestTeamScore }}</li>
-      <li> field: {{ field }}</li>
+      host: 
+      <router-link :to="{ name: 'team' , params: {id: `${this.hostId}`}}">
+         {{ hostTeam }}
+      </router-link>
+      <br>
+      guest:
+      <router-link :to="{ name: 'team' , params: {id: `${this.guestId}`}}"> 
+         {{ guestTeam }}
+      </router-link>
+      <br>
+      date: {{ date.split('T')[0] }}
+      <br>
+      time: {{ hour.split('T')[1].substring(0,5) }}
+      <br>
+      field: {{ field }}
+      <br>
+      <a v-if="!(hostTeamScore == undefined || hostTeamScore == null)"> host score: {{ hostTeamScore }}</a> 
+      <br>
+      <a v-if="!(guestTeamScore == undefined || guestTeamScore == null)"> guest score: {{ guestTeamScore }}</a>
+      <br>
+      <b-button v-if="this.$root._data.store.username !== undefined" @click="addFavGame(id)" class="btn btn-info btn-sm">Add to Favorites</b-button>
+
     </ul>
   </div>
 </template>
@@ -21,7 +36,7 @@ export default {
   props: {
       id: {
         type: Number,
-        // required: true
+        required: true
       },
       hostTeam: {
         type: String,
@@ -29,6 +44,14 @@ export default {
       },
       guestTeam: {
         type: String,
+        required: true
+      },
+      hostId: {
+        type: Number,
+        required: true
+      },
+      guestId: {
+        type: Number,
         required: true
       },
       date: {
@@ -50,16 +73,36 @@ export default {
       }
   }, 
   mounted(){
-    console.log("game preview mounted")
-  } 
+         console.log(this.$root._data.store.username)
+
+  } ,
+  methods: {
+    async addFavGame(gameId){
+     // check if game is already in players favorites 
+     try {
+       console.log("add favorite game")
+        this.axios.defaults.withCredentials = true;
+        await this.axios.post(
+          "http://localhost:3003/users/favoriteGames",
+          {
+            gameID: gameId
+          }
+        );
+      } catch (error) {
+        console.log("error in add favorite game")
+        console.log(error);
+      }
+    }
+
+}
 };
 </script>
 
 <style>
 .game-preview {
   display: inline-block;
-  width: 250px;
-  height: 200px;
+  width: 200px;
+  height: 230px;
   position: relative;
   margin: 10px 10px;
   border-style: solid;

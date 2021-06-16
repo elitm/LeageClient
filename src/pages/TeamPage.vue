@@ -1,5 +1,6 @@
 <template>
     <div>
+      <h1 class="title">Team Page</h1>
         <TeamFullDetails>
         </TeamFullDetails>
     </div>
