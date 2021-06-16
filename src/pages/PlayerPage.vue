@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1 class="title">Player Page</h1>
         <playerFullDetails></playerFullDetails>
     </div>
 </template>
@@ -9,10 +10,7 @@
     export default {
       components:{
           playerFullDetails
-      } ,
-      mounted(){
-    // console.log(this.$route)
-    }
+      } 
     };
 
 </script>

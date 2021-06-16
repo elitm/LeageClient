@@ -19,6 +19,9 @@
           <router-link :to="{ name: 'search' }">Search</router-link>
         </button>
         <button class="btn navB" type="button">
+          <router-link :to="{ name: 'games' }">Games</router-link>
+        </button>
+        <button class="btn navB" type="button">
           <router-link :to="{ name: 'about' }">About</router-link>
         </button>
         <b-navbar-nav class="navbar-nav ml-auto">

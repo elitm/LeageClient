@@ -2,15 +2,17 @@
   <div>
     <GamePreview
       v-for="g in games"
-      :id="g.id" 
+      :id="g.game_id" 
       :hostTeam="g.local_team" 
       :guestTeam="g.visitor_team" 
-      :date="g.game_date.split('T')[0]" 
-      :hour="g.game_date.split('T')[1].substring(0,5)"
+      :hostId="g.local_team_id"
+      :guestId="g.visitor_team_id"
+      :date="g.game_date" 
+      :hour="g.game_date"
       :hostTeamScore="g.local_team_score"
       :guestTeamScore="g.visitor_team_score"
       :field="g.field"
-      :key="g.id"></GamePreview>
+      :key="g.game_id"></GamePreview>
   </div>
 </template>
 
@@ -28,8 +30,9 @@ export default {
   },
   methods: {
     async updateFavGames(){
-      console.log("response");
+      console.log("favorite games");
       try {
+        this.axios.defaults.withCredentials = true;
         const response = await this.axios.get(
           "http://localhost:3003/users/favoriteGames",
         );
