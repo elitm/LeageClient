@@ -1,24 +1,20 @@
 <template>
   <div>
-    <h1 class="title">Search Page</h1>
-    <b-input-group prepend="Search Query:" id="search-input">
-      <b-form-input v-model="searchQuery"></b-form-input>
-      <b-input-group-append>
-        <b-button variant="success">Search</b-button>
-      </b-input-group-append>
-    </b-input-group>
-      <br/>
-      Your search Query: {{ searchQuery }}
+    <search></search>
   </div>
 </template>
 
 <script>
+import search from "../components/search.vue"
 export default {
  data() {
     return {
       searchQuery:""
     };
   },
+  components:{
+    search
+  }
 }
 </script>
 
