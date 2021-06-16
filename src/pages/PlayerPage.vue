@@ -9,8 +9,12 @@
     export default {
       components:{
           playerFullDetails
-      }  
+      } ,
+      mounted(){
+    // console.log(this.$route)
+    }
     };
+
 </script>
 
 <style lang="scss" scoped>

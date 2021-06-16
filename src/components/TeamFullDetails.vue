@@ -8,6 +8,7 @@
        <br>
         <PlayerPreview
             v-for="p in players"
+            :playerId="p.id"
             :name="p.name"
             :imageUrl="p.image"
             :position="p.position"

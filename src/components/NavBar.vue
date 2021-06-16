@@ -34,7 +34,7 @@
         </span>
         <span v-else>
           <b-dropdown id="dropdown-1"  text="My Profile" class="mr-3" variant="light" >
-            <b-dropdown-item :to="{ name: 'FavoriteGames' }">My Favorite Games</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'favoriteGames' }">My Favorite Games</b-dropdown-item>
             <b-dropdown-item class="btn navB" @click="Logout">Logout</b-dropdown-item>
           </b-dropdown>
          <B>Hello {{ $root.store.username }}</B>

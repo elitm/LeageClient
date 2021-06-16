@@ -4,7 +4,7 @@
     <b-input-group prepend="Search Query:" id="search-input">
       <b-form-input v-model="searchQuery"></b-form-input>
       <b-input-group-append>
-        <b-button variant="success" >Search</b-button>
+        <b-button variant="success" @click="Search(searchQuery)">Search</b-button>
       </b-input-group-append>
     </b-input-group>
       <br/>
@@ -20,7 +20,9 @@ export default {
     };
   },
   methods: {
-    
+    async Search(query) {
+      console.log(`query received: ${query}`);
+    }
   }
 }
 </script>

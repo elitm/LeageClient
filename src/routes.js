@@ -28,7 +28,7 @@ const routes = [
     component: () => import("./pages/AboutPage")
   },
   {
-    path: "/player",
+    path: "/player/:id",
     name: "player",
     component: () => import("./pages/PlayerPage")
   },
