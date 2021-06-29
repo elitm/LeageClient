@@ -24,6 +24,15 @@
         <button class="btn navB" type="button">
           <router-link :to="{ name: 'about' }">About</router-link>
         </button>
+         <button v-if="$root.store.username === 'elit'" class="btn navB" type="button">
+          <router-link :to="{ name: 'manager' }">Admin</router-link>
+        </button>
+          <!-- <b-dropdown id="dropdown-admin"  text="Admin" class="mr-3" variant="dark" >
+            <b-dropdown-item :to="{ name: 'favoriteGames' }">Add Game</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'favoriteGames' }" >Add Score</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'favoriteGames' }" >Add Event</b-dropdown-item>
+          </b-dropdown> -->
+
         <b-navbar-nav class="navbar-nav ml-auto">
         <span v-if="!$root.store.username">
             <B>Hello Guest</B>
@@ -38,6 +47,7 @@
         <span v-else>
           <b-dropdown id="dropdown-1"  text="My Profile" class="mr-3" variant="light" >
             <b-dropdown-item :to="{ name: 'favoriteGames' }">My Favorite Games</b-dropdown-item>
+            <b-dropdown-item :to="{ name: 'favoritePlayers' }">My Favorite Players</b-dropdown-item>
             <b-dropdown-item class="btn navB" @click="Logout">Logout</b-dropdown-item>
           </b-dropdown>
          <B>Hello {{ $root.store.username }}</B>
