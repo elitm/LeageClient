@@ -25,6 +25,9 @@
       <a v-if="!(guestTeamScore == undefined || guestTeamScore == null)"> guest score: {{ guestTeamScore }}</a>
       <br>
       <b-button v-if="this.$root._data.store.username !== undefined" @click="addFavGame(id)" class="btn btn-info btn-sm">Add to Favorites</b-button>
+      <!-- <b-button v-if="canAddScores()" @click="updateScores()" class="btn btn-info btn-sm">Update Scores</b-button> -->
+
+
 
     </ul>
   </div>
@@ -73,7 +76,6 @@ export default {
       }
   }, 
   mounted(){
-         console.log(this.$root._data.store.username)
 
   } ,
   methods: {
@@ -92,10 +94,9 @@ export default {
         console.log("error in add favorite game")
         console.log(error);
       }
-    }
+    },
 
-}
-};
+}};
 </script>
 
 <style>

@@ -21,7 +21,7 @@
       :id="g.game_id" 
       :hostTeam="g.local_team" 
       :guestTeam="g.visitor_team" 
-            :hostId="g.local_team_id"
+      :hostId="g.local_team_id"
       :guestId="g.visitor_team_id"
       :date="g.game_date" 
       :hour="g.game_date"
