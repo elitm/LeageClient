@@ -1,54 +1,68 @@
 <template>
-    <div>    
+    <div> 
+      <b-container> 
     <h1 class="title">Search Page</h1>
-    <!-- <b-form @submit.prevent="onSearch" @reset.prevent="onReset"> -->
+    <b-form @submit.prevent="onSearch" @reset.prevent="onReset">
     <b-input-group prepend="Search Query:" id="search-input">
-      <b-form-input v-model="searchQuery"></b-form-input>
+      <b-form-input v-model="query" id="query"></b-form-input>
       <b-input-group-append>
         <b-button 
         type="submit"
-        variant="success"
+        variant="info"
         >Search</b-button>
       </b-input-group-append>
     </b-input-group>
+    </b-form>
       <br/>
-      Your search Query: {{ searchQuery }}
-    <span v-if="!{searchQuery}">
-        <Player>
-            v-for="p in players"
-            :name="p.name"
-            :imageUrl="p.imageUrl"
-            :position="p.position"
-            :key="p.position" 
-            <!-- todo - fix key -->
-        </Player>
-    </span>
+      Your search Query: {{ query }}
+      <br/>
+        <span v-if="{query}">
+            <span v-if="!players.length && !teams.length">
+                    There are No elements to return
+            </span>
+            <span v-else>
+                <SearchPlayers :items="players"></SearchPlayers>
+                <SearchTeams :items="teams"> </SearchTeams>
+            </span>
+        </span>
+    </b-container>
     </div>
 </template>
 
 <script>
-import Player from "./PlayerPreview";    
+
+import SearchPlayers from "./SearchPlayers";
+import SearchTeams from "./SearchTeams";
 export default {
     name: "Search",
     components:{
-        Player
+        SearchPlayers,
+        SearchTeams
     },
     data(){
         return{
-            players: []
+            players: [],
+            teams: [],
+            query: "",
+            filter_team: ""
         };
     },
     methods:{
         async newSearch(){
-            let name = "Sten";
-            console.lo("start searching at the server");
+            console.log(this.query);
+            console.log("start searching at the server");
             try{
                 const response = await this.axios.get(
-                    `http://localhost:3003/search/${name}`,
-                );
-                const Players = response.data[0];
+                    `http://localhost:3003/search/${this.query}`,);
+                const players = response.data.players;
+                const teams = response.data.teams;
+                console.log(teams);
+
                 this.players = [];
-                this.Players.push(...players);
+                this.players.push(...players);
+                console.log(this.players);
+                this.teams = [];
+                this.teams.push(...teams);
             }catch (error){
                 console.log("error in search");
                 console.log(error);
@@ -58,12 +72,22 @@ export default {
         onSearch(){
            console.log("neaSearch method was called");
            this.newSearch(); 
-        }
+        },
 
+        onReset(){
+            console.log("reset before new search");
+            this.$v.$reset();
+        },
+
+        TeamFilter(){
+            this.$emit('this.players', 'filter_team', this.filter_team)
+        }
     }
+        
 }
 </script>
 
 <style lang="scss" scoped>
-    
+
+
 </style>

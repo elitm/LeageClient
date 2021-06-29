@@ -1,30 +1,36 @@
 <template>
     <div class="league-preview">
-      <b-card
-      img-alt="Image"
-      tag="article"
-      style="max-width: 20rem;"
-      class="mb-2"
-    >
-      <b-card-title>{{leagueName}}</b-card-title>
-      <b-card-text> 
-        Season: {{ season }}
-        <br>
-        Stage: {{ stage }}
-        <br>
-        Next Game: <GamePreview 
-          :id="nextGame.game_id"
-          :hostTeam="nextGame.local_team" 
-          :guestTeam="nextGame.visitor_team" 
-          :hostId="nextGame.local_team_id"
-          :guestId="nextGame.visitor_team_id"
-          :date="nextGame.game_date" 
-          :hour="nextGame.game_date"
-          :field="nextGame.field"
-        ></GamePreview>
-      </b-card-text>
-      <b-button href="#" variant="primary">Go somewhere</b-button>
+      <b-container class="container">
+        <b-row>
+          <b-card
+          img-alt="Image"
+          tag="article"
+          style="max-width: 20rem;"
+          class="mb-2">
+          <b-col>
+            <b-card-title>{{leagueName}}</b-card-title>
+            <b-card-text> 
+              Season: {{ season }}
+              <br>
+              Stage: {{ stage }}
+              <br>
+              </b-card-text>
+        </b-col>
+        <b-col>
+          Next Game: <GamePreview 
+            :id="nextGame.game_id"
+            :hostTeam="nextGame.local_team" 
+            :guestTeam="nextGame.visitor_team" 
+            :hostId="nextGame.local_team_id"
+            :guestId="nextGame.visitor_team_id"
+            :date="nextGame.game_date" 
+            :hour="nextGame.game_date"
+            :field="nextGame.field"
+          ></GamePreview>
+        </b-col>
     </b-card>
+    </b-row>
+  </b-container>
   </div>
 </template>
 
@@ -70,8 +76,8 @@ export default {
 <style>
 .league-preview {
   display: inline-block;
-  width: 250px;
-  height: 200px;
+  width: 400px;
+  height: 415px;
   position: relative;
   margin: 10px 10px;
   border-style: solid;

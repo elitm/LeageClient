@@ -23,8 +23,10 @@ import {
   FormSelectPlugin,
   AlertPlugin,
   ToastPlugin,
+  FormCheckboxPlugin,
   LayoutPlugin, 
-  InputGroupPlugin
+  InputGroupPlugin,
+  TablePlugin
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -36,8 +38,11 @@ import {
   FormSelectPlugin,
   AlertPlugin,
   ToastPlugin,
+  TablePlugin,
+  FormCheckboxPlugin,
   LayoutPlugin, 
   InputGroupPlugin
+  
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 

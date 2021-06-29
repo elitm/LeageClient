@@ -1,27 +1,21 @@
 <template>
-  <div class="player-preview">
-    <div :title="name" class="player-title">
-       <router-link :to="{ name: 'player' , params: {id: `${this.playerId}`}}">
+  <div class="team-preview">
+    <div :title="name" class="team-title">
+       <router-link :to="{ name: 'team' , params: {id: `${this.teamId}`}}">
           <b>{{ name }}</b> 
        </router-link>
     </div >
-    <div class="player-content">
+    <div class="team-content">
     <img :src= imageUrl >
     <!-- <p> {{ imageUrl}} </p> -->
-    <p> position: {{ position }} </p>
-    <!-- <p> teamName: {{ teamName }} </p>  -->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "PlayerPreview",
+  name: "teamPreview",
   props: {
-      playerId: {
-        type: Number,
-        required: true
-      },
       name: {
         type: String,
         required: true
@@ -29,26 +23,19 @@ export default {
       imageUrl: {
         type: String,
         required: true
-      },
-      position: {
-        type: Number,
-        required: true
-      },
-      // teamName: {
-      //   type: String,
-      // }
+      }
   }, 
   mounted(){
-    console.log("player preview mounted")
+    console.log("team preview mounted")
   } 
 };
 </script>
 
 <style>
-.player-preview {
+.team-preview {
   display: inline-block;
-  width: 275px;
-  height: 250px;
+  width: 240px;
+  height: 210px;
   position: relative;
   margin: 10px 10px;
   border-style: solid;
@@ -57,13 +44,13 @@ export default {
   border-color:cadetblue;
 }
 
-.player-preview .player-title {
+.team-preview .team-title {
   text-align: center;
   text-transform: uppercase;
   color:  rgb(111, 197, 157);
 }
 
-.player-preview .player-content {
+.team-preview .team-content {
   width: 100%;
   overflow: hidden;
 }
