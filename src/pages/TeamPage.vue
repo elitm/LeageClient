@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <b-container>
       <h1 class="title">Team Page</h1>
         <TeamFullDetails>
         </TeamFullDetails>
-    </div>
+    </b-container>
 </template>
 
 <script >

@@ -3,20 +3,12 @@
     <div :title="teamName" class="team-title">
       <b>{{ teamName }}</b> 
     </div >
-    <br>  
-   Players:
-       <br>
-        <PlayerPreview
-            v-for="p in players"
-            :playerId="p.id"
-            :name="p.name"
-            :imageUrl="p.image"
-            :position="p.position"
-            :src="p.image"
-            :key="p.name">
-        </PlayerPreview>
+    <br>
+    <b-container>
+      <b-row> 
+    <b-col>
         <br>
-    Past Games:
+    <h4>Past Games:</h4>
          <br>
         <GamePreview
             v-for="g in pastGames"
@@ -32,8 +24,10 @@
             :field="g.field"
             :key="g.game_id">
         </GamePreview>
+    </b-col>
+    <b-col>
      <br>
-     Future Games:
+     <h4>Future Games:</h4>
      <br>
         <GamePreview
             v-for="g in futureGames"
@@ -47,6 +41,23 @@
             :field="g.field"
             :key="g.game_id">
         </GamePreview>
+        </b-col>
+      </b-row>
+        <br>
+        <h4>Players:</h4>
+       <br>
+        <b-row>
+        <PlayerPreview
+            v-for="p in players"
+            :playerId="p.id"
+            :name="p.name"
+            :imageUrl="p.image"
+            :position="p.position"
+            :src="p.image"
+            :key="p.name">
+        </PlayerPreview>
+      </b-row> 
+    </b-container> 
   </div>
 </template>
 
@@ -114,5 +125,6 @@ export default {
   text-transform: uppercase;
   font-size: 35px;
   color:  rgb(79, 146, 115);
+  background-color: rgb(255, 255, 255);
 }
 </style>

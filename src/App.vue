@@ -25,6 +25,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
+    background: 
+  linear-gradient(rgba(141, 197, 158, 0.5), 
+  rgba(139, 206, 150, 0.5)), 
+  url("./assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover  
 }
 
 #nav {

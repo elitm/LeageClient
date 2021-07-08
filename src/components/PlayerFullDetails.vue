@@ -75,26 +75,28 @@
 </script>
 
 <style lang="scss" scoped>
-.game-preview {
+.mb-2 {
   display: inline-block;
-  width: 250px;
-  height: 200px;
+  width: 400px;
+  height: 430px;
   position: relative;
-  margin: 10px 10px;
+  margin: 10px 500px;
   border-style: solid;
   border-radius: 10px;
   border-width: 5px;
-  border-color:cadetblue;
+  border-color:rgb(0, 0, 0);
+  background-color: rgb(243, 248, 252);
+  
 }
 
-.game-preview .game-title {
+.mb-2{
   text-align: center;
-  text-transform: uppercase;
-  color:  rgb(111, 197, 157);
+  color:  rgb(69, 70, 69);
 }
 
-.game-preview .game-content {
+.mb-2 {
   width: 100%;
   overflow: hidden;
 }
+
 </style>

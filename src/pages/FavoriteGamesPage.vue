@@ -1,5 +1,5 @@
 <template>
-    <favoriteGames></favoriteGames>
+    <favoriteGames class="favorite-game"></favoriteGames>
 </template>
 
 <script>
@@ -12,5 +12,7 @@ export default {
 </script>
 
 <style scoped>
-
+.favorite-game{
+  margin: 30px 380px;
+}
 </style>

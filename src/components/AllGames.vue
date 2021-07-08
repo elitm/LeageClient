@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <p> past games: </p>
+  <b-container>
+      <h4><p> past games: </p></h4>
     <GamePreview
       v-for="g in past_games"
       :id="g.game_id" 
@@ -15,7 +15,7 @@
       :field="g.field"
       :key="g.game_id"></GamePreview>
 
-     <p> future games: </p>
+     <h4><p> future games: </p></h4>
     <GamePreview
       v-for="g in future_games"
       :id="g.game_id" 
@@ -29,7 +29,7 @@
       :key="g.game_id"></GamePreview>
 
       
-  </div>
+  </b-container>
 </template>
 
 <script>

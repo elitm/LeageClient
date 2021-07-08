@@ -1,13 +1,8 @@
 <template>
-    <div class="league-preview">
       <b-container class="container">
         <b-row>
-          <b-card
-          img-alt="Image"
-          tag="article"
-          style="max-width: 20rem;"
-          class="mb-2">
-          <b-col>
+          <div class="left-side">
+          <b-col class="league-dital">
             <b-card-title>{{leagueName}}</b-card-title>
             <b-card-text> 
               Season: {{ season }}
@@ -17,7 +12,9 @@
               </b-card-text>
         </b-col>
         <b-col>
-          Next Game: <GamePreview 
+          <br/>
+          <h5> Next Game:</h5>
+          <GamePreview 
             :id="nextGame.game_id"
             :hostTeam="nextGame.local_team" 
             :guestTeam="nextGame.visitor_team" 
@@ -28,10 +25,9 @@
             :field="nextGame.field"
           ></GamePreview>
         </b-col>
-    </b-card>
+        </div>
     </b-row>
   </b-container>
-  </div>
 </template>
 
 <script>
@@ -74,7 +70,15 @@ export default {
 </script>
 
 <style>
-.league-preview {
+
+.left-side {
+  text-align: center;
+  color:  rgb(11, 40, 68);
+  width: 100%;
+  overflow: hidden;
+}
+
+.left-side{
   display: inline-block;
   width: 400px;
   height: 415px;
@@ -83,18 +87,8 @@ export default {
   border-style: solid;
   border-radius: 10px;
   border-width: 5px;
-  border-color:rgb(44, 89, 116);
-}
-
-.league-preview .league-title {
-  text-align: center;
-  text-transform: uppercase;
-  color:  rgb(111, 155, 197);
-}
-
-.league-preview .league-content {
-  width: 100%;
-  overflow: hidden;
+  border-color:rgb(6, 51, 29);
+  background-color: #e6e6e6;
 }
 
 </style>
