@@ -70,7 +70,7 @@
         </template>
 
         <template #cell(name)="row">
-        <router-link :to="{ name: 'player' , params: {id: `${row.playerId}`}}">
+        <router-link :to="{ name: 'player' , params: {id: `${row.item.id}`}}">
              {{ row.item.name}}
        </router-link>
         </template>
@@ -114,6 +114,7 @@
         },
         mounted(){
             console.log("Search players");
+            
         }
     }
 </script>

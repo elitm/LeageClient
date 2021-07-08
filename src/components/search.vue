@@ -1,7 +1,10 @@
 <template>
     <div> 
-      <b-container> 
-    <h1 class="title">Search Page</h1>
+    <b-container> 
+    <b-row>     
+    <b-col><h1 class="title">Search Page</h1></b-col>
+    <b-col><b-button v-on:click="lastSearch"> My Last Search</b-button></b-col>
+    </b-row>
     <b-form @submit.prevent="onSearch" @reset.prevent="onReset">
     <b-input-group prepend="Search Query:" id="search-input">
       <b-form-input v-model="query" id="query" required></b-form-input>
@@ -9,14 +12,13 @@
         <b-button 
         type="submit"
         variant="info"
-        @click="clicked = !clicked"
         >Search</b-button>
       </b-input-group-append>
     </b-input-group>
     </b-form>
-      <br/>
-      Your search Query: {{ query }}
-      <br/>
+      <br/><h5>
+       Your search Query: {{ query }}
+      </h5><br/>
         <span v-if="{query}">
              <span v-if="!hasResults ">
                     There are no elements to return
@@ -24,8 +26,10 @@
             <!-- <span v-if="!players.length && !teams.length">
             </span> -->
             <span v-else>
+                <b-container class="search-contaiter">
                 <SearchPlayers :items="players"></SearchPlayers>
                 <SearchTeams :items="teams"> </SearchTeams>
+                </b-container>
             </span>
         </span>
     </b-container>
@@ -49,7 +53,9 @@ export default {
             query: "",
             filter_team: "",
             hasResults: true,
-            clicked: false
+            lastSearchPlayer:[],
+            lastSearchTeams:[],
+            lastQuery:""
         };
     },
     methods:{
@@ -92,13 +98,46 @@ export default {
 
         TeamFilter(){
             this.$emit('this.players', 'filter_team', this.filter_team)
-        }
+        },
+    async lastSearch(){
+        console.log("try to return user last search");
+            try{
+                const response = await this.axios.get(
+                    `http://localhost:3003/users/lastSearch`,);
+                console.log(response);
+                this.query = response.data[0];
+                const lastSearch = response.data[1];
+                console.log(query);
+
+                this.players = [];
+                this.players.push(...lastSearch.players);
+                this.teams = [];
+                this.teams.push(...lastSearch.teams);
+                console.log("last search returned")
+            }catch (error){
+                console.log("error in Last search");
+                console.log(error);
+            }
+    }
     }
         
 }
 </script>
 
 <style lang="scss" scoped>
+.lastButton{
+    color: rgb(253, 255, 255);
+    background-color: rgb(138, 138, 138);
+    
+}
 
+.search-contaiter {
+  align-items: right;
+    border-style: solid;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color:rgb(6, 51, 29);
+  background-color: #e6e6e6;
+}
 
 </style>

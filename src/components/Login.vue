@@ -39,7 +39,7 @@
       <b-button
         type="submit"
         variant="primary"
-        style="width:100px;display:block;"
+        style="width:100px;display:block; background-color:green"
         class="mx-auto w-100"
         >Login</b-button
       >
@@ -128,7 +128,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  max-width: 400px;
+  max-width: 500px;
+  height: 300px;
   align-items: right;
+    border-style: solid;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color:rgb(6, 51, 29);
+  background-color: #e6e6e6;
 }
 </style>

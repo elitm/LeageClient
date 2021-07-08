@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col>
-      <p> past games: </p>
+      <h4> past games: </h4>
     <GamePreview
       v-for="g in past_games"
       :id="g.game_id" 
@@ -20,7 +20,7 @@
       :key="g.game_id"></GamePreview>
       </b-col>
       <b-col>
-     <p> future games: </p>
+     <h4> future games: </h4>
     <GamePreview
       v-for="g in future_games"
       :id="g.game_id" 
@@ -35,7 +35,6 @@
       </b-col>
       </b-row>
     </b-container>
-      
   </div>
 </template>
 

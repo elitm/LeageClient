@@ -1,7 +1,7 @@
 <template>
-    <div>
-      <h1> Add Score to Game</h1>
-        <form>
+    <div style="text-align: center">
+      <h3> Add Score to Game</h3>
+        <form class="add-form">
         <div class="form-group">
             <label>Game ID</label>
             <input type="number" class="form-control" id="gameId" v-model="gameId" required>
@@ -61,5 +61,24 @@ export default {
 </script>
 
 <style scoped>
+ .add-form{
+    display: inline-block;
+    width: 90%;
+    height: 55%;
+    position: relative;
+    margin: 10px 10px;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color:rgb(98, 100, 100);
+    background-color: rgb(221, 221, 221);
+    text-align: center;
+  }
+
+  .form-control{
+    width: 100%;
+    -moz-box-align: center;
+    text-align: center;
+  }
 
 </style>

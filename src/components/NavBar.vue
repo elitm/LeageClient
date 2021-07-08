@@ -27,11 +27,6 @@
          <button v-if="$root.store.username === 'elit'" class="btn navB" type="button">
           <router-link :to="{ name: 'manager' }">Admin</router-link>
         </button>
-          <!-- <b-dropdown id="dropdown-admin"  text="Admin" class="mr-3" variant="dark" >
-            <b-dropdown-item :to="{ name: 'favoriteGames' }">Add Game</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'favoriteGames' }" >Add Score</b-dropdown-item>
-            <b-dropdown-item :to="{ name: 'favoriteGames' }" >Add Event</b-dropdown-item>
-          </b-dropdown> -->
 
         <b-navbar-nav class="navbar-nav ml-auto">
         <span v-if="!$root.store.username">
@@ -58,6 +53,7 @@
     </div>
     <router-view />
   </div>
+
 </template>
 
 <script>
@@ -91,5 +87,6 @@
   }};
 </script>
 
-<style lang="scss" scoped>
+<style>
+  
 </style>

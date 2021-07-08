@@ -1,17 +1,17 @@
 <template>
-  <div class="player-preview">
+    <div class="player-preview">
     <div :title="name" class="player-title">
-       <router-link :to="{ name: 'player' , params: {id: `${this.playerId}`}}">
+      <router-link :to="{ name: 'player' , params: {id: `${this.playerId}`}}">
           <b>{{ name }}</b> 
        </router-link>
     </div >
     <div class="player-content">
-    <img :src= imageUrl >
+    <img :src= imageUrl > 
     <!-- <p> {{ imageUrl}} </p> -->
     <p> position: {{ position }} </p>
     <p> teamName: {{ teamName }} </p> 
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -47,14 +47,19 @@ export default {
 <style>
 .player-preview {
   display: inline-block;
-  width: 275px;
-  height: 250px;
+  max-width: 19rem;
+  min-width: 19rem;
+  max-height: 17rem;
+  min-height: 17rem;
   position: relative;
   margin: 10px 10px;
   border-style: solid;
   border-radius: 10px;
-  border-width: 5px;
-  border-color:cadetblue;
+  border-width: 6px;
+  border-color:rgb(7, 88, 48);
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+
 }
 
 .player-preview .player-title {
@@ -65,9 +70,9 @@ export default {
 
 .player-preview .player-content {
   width: 100%;
-  overflow: hidden;
+  vertical-align: middle;
+  padding: 15%;
+  
 }
-
-
 
 </style>

@@ -1,6 +1,8 @@
 <template>
+  <b-container>
     <AllGames>
     </AllGames>
+  </b-container>
 </template>
 
 <script>

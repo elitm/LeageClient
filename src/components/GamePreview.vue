@@ -131,13 +131,14 @@ export default {
   border-style: solid;
   border-radius: 10px;
   border-width: 5px;
-  border-color:cadetblue;
+  border-color:rgb(0, 0, 0);
+  background-color: rgb(243, 248, 252);
 }
 
 .game-preview .game-title {
   text-align: center;
   text-transform: uppercase;
-  color:  rgb(111, 197, 157);
+  color:  rgb(69, 70, 69);
 }
 
 .game-preview .game-content {

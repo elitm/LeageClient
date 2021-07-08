@@ -26,7 +26,7 @@ import {
   FormCheckboxPlugin,
   LayoutPlugin, 
   InputGroupPlugin,
-  TablePlugin
+  TablePlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -41,7 +41,7 @@ import {
   TablePlugin,
   FormCheckboxPlugin,
   LayoutPlugin, 
-  InputGroupPlugin
+  InputGroupPlugin,
   
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
