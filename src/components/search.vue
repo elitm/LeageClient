@@ -4,11 +4,12 @@
     <h1 class="title">Search Page</h1>
     <b-form @submit.prevent="onSearch" @reset.prevent="onReset">
     <b-input-group prepend="Search Query:" id="search-input">
-      <b-form-input v-model="query" id="query"></b-form-input>
+      <b-form-input v-model="query" id="query" required></b-form-input>
       <b-input-group-append>
         <b-button 
         type="submit"
         variant="info"
+        @click="clicked = !clicked"
         >Search</b-button>
       </b-input-group-append>
     </b-input-group>
@@ -17,9 +18,11 @@
       Your search Query: {{ query }}
       <br/>
         <span v-if="{query}">
-            <span v-if="!players.length && !teams.length">
-                    There are No elements to return
-            </span>
+             <span v-if="!hasResults ">
+                    There are no elements to return
+                 </span>
+            <!-- <span v-if="!players.length && !teams.length">
+            </span> -->
             <span v-else>
                 <SearchPlayers :items="players"></SearchPlayers>
                 <SearchTeams :items="teams"> </SearchTeams>
@@ -44,7 +47,9 @@ export default {
             players: [],
             teams: [],
             query: "",
-            filter_team: ""
+            filter_team: "",
+            hasResults: true,
+            clicked: false
         };
     },
     methods:{
@@ -56,21 +61,27 @@ export default {
                     `http://localhost:3003/search/${this.query}`,);
                 const players = response.data.players;
                 const teams = response.data.teams;
-                console.log(teams);
-
+                // console.log(players);
+                // console.log(teams);
+                if (players === undefined && teams === undefined) // search has no results
+                    this.hasResults = false;
+                else {
+                this.hasResults = true;
                 this.players = [];
                 this.players.push(...players);
                 console.log(this.players);
                 this.teams = [];
                 this.teams.push(...teams);
+                }
+                console.log(this.hasResults);
+
             }catch (error){
                 console.log("error in search");
                 console.log(error);
             }
         },
-
         onSearch(){
-           console.log("neaSearch method was called");
+           console.log("new Search method was called");
            this.newSearch(); 
         },
 

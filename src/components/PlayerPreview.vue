@@ -9,7 +9,7 @@
     <img :src= imageUrl >
     <!-- <p> {{ imageUrl}} </p> -->
     <p> position: {{ position }} </p>
-    <!-- <p> teamName: {{ teamName }} </p>  -->
+    <p> teamName: {{ teamName }} </p> 
     </div>
   </div>
 </template>
@@ -34,9 +34,9 @@ export default {
         type: Number,
         required: true
       },
-      // teamName: {
-      //   type: String,
-      // }
+      teamName: {
+        type: String,
+      }
   }, 
   mounted(){
     console.log("player preview mounted")

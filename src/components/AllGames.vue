@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-container>
+      <b-row>
+        <b-col>
       <p> past games: </p>
     <GamePreview
       v-for="g in past_games"
@@ -13,8 +16,10 @@
       :hostTeamScore="g.local_team_score"
       :guestTeamScore="g.visitor_team_score"
       :field="g.field"
+      :events="g.events"
       :key="g.game_id"></GamePreview>
-
+      </b-col>
+      <b-col>
      <p> future games: </p>
     <GamePreview
       v-for="g in future_games"
@@ -27,7 +32,9 @@
       :hour="g.game_date"
       :field="g.field"
       :key="g.game_id"></GamePreview>
-
+      </b-col>
+      </b-row>
+    </b-container>
       
   </div>
 </template>
@@ -44,29 +51,24 @@ export default {
     //   games: [],
       past_games: [],
       future_games: [],
-      events: []
+      // events: []
     };
   },
   methods: {
     async updateAllGames(){
-      console.log("response");
       try {
         const response = await this.axios.get(
           "http://localhost:3003/games/viewGames",
         );
         console.log(response.data);
-        // const games = response.data[0];
+
         const past_games = response.data[0][0];
         const future_games = response.data[0][1];
-        const events = response.data[1];
-        // this.games = [];
         this.past_games = [];
         this.future_games = [];
-        this.events = [];
-        // this.games.push(...games);
+
         this.past_games.push(...past_games);
         this.future_games.push(...future_games);
-        this.events.push(...events);
 
       } catch (error) {
         console.log("error in update games")

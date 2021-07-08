@@ -22,7 +22,7 @@
                 <option>offense</option>
                 <option>offside</option>
                 <option>redcard</option>
-                <option>yallowcard</option>
+                <option>yellowcard</option>
                 <option>substitution</option>
             </select>  
         </div>
@@ -59,7 +59,7 @@ export default {
           "http://localhost:3003/manage/addEvent",
           {
             game_id: this.gameId,
-            event_time: this.date,
+            event_time: this.date.replace("T", " "),
             minute_in_game: this.minute,
             event_description: this.description,
             type: this.type

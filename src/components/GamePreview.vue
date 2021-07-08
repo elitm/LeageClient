@@ -1,5 +1,8 @@
 <template>
-  <div class="game-preview">
+ <b-container>
+  <b-row>
+    <b-col>
+        <div class="game-preview">
     <div :title="id" class="game-title">
       <b>Game Id:</b> {{ id }}
     </div>
@@ -24,18 +27,26 @@
       <br>
       <a v-if="!(guestTeamScore == undefined || guestTeamScore == null)"> guest score: {{ guestTeamScore }}</a>
       <br>
+      <b-button v-if="events" @click="showEvents = !showEvents">Show events</b-button>
       <b-button v-if="this.$root._data.store.username !== undefined" @click="addFavGame(id)" class="btn btn-info btn-sm">Add to Favorites</b-button>
-      <!-- <b-button v-if="canAddScores()" @click="updateScores()" class="btn btn-info btn-sm">Update Scores</b-button> -->
-
-
-
-    </ul>
-  </div>
+      </ul>
+        </div>
+        </b-col>
+        <b-col>
+      <a class="event-preview" v-if="showEvents"><EventPreview :items="events"></EventPreview></a>
+       </b-col>
+      </b-row>
+    </b-container>
 </template>
 
 <script>
+import EventPreview from "./EventPreview.vue";
+
 export default {
   name: "GamePreview",
+  components:{
+    EventPreview
+  },
   props: {
       id: {
         type: Number,
@@ -66,13 +77,24 @@ export default {
         required: true
       },
       hostTeamScore: {
-        type: Number
+        type: Number,
+        required: false
+
       },
       guestTeamScore: {
-        type: Number  
+        type: Number,
+        required: false
       },
       field: {
         type: String
+      },
+      events: {
+        type: Array,
+        required: false
+      },
+      showEvents:{
+        type: Boolean,
+        default: false
       }
   }, 
   mounted(){
@@ -121,6 +143,11 @@ export default {
 .game-preview .game-content {
   width: 100%;
   overflow: hidden;
+}
+
+.game-preview .event-preview {
+  width: 50%;
+  /* overflow: hidden; */
 }
 
 
