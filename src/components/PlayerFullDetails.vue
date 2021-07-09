@@ -24,6 +24,9 @@
             Height: {{height}}
             <br/>
             Weight: {{weight}}
+            <br>
+            <br>
+            <b-button v-if="this.$root._data.store.username !== undefined" @click="addFavPlayer(id)" class="btn btn-info btn-sm">Add to Favorites👍</b-button>
         </b-card-text>
     </b-card>
     </div>
@@ -34,6 +37,7 @@
         name:"PlayerFullDetails" ,
         data(){
             return{
+                id: "",
                 name: "",
                 team_name:"",
                 image:"",
@@ -52,6 +56,7 @@
               try{
                 const response = await this.axios.get(
                     `http://localhost:3003/players/PlayerFullDetails/${playerID}`,);
+                this.id = response.data[0].id;
                 this.name = response.data[0].name;
                 this.team_name = response.data[0].team_name;
                 this.image = response.data[0].image;
@@ -65,7 +70,27 @@
               }catch(error){
                   console.log(error);
               }
+          },
+          
+    async addFavPlayer(playerID){
+
+     try {
+       console.log("add favorite player")
+        this.axios.defaults.withCredentials = true;
+        await this.axios.post(
+          "http://localhost:3003/users/favoritePlayers",
+          {
+            playerId: playerID
           }
+        );
+       this.$root.toast("Add to Favorites", "player added to favorites successfully", "success");
+
+      } catch (error) {
+        console.log("error in add favorite player")
+        this.$root.toast("", error.response.data, "warning");
+
+      }
+    },
     },
      mounted(){
          console.log("player full details get param");
@@ -78,7 +103,7 @@
 .mb-2 {
   display: inline-block;
   width: 400px;
-  height: 430px;
+  height: 440px;
   position: relative;
   margin: 10px 500px;
   border-style: solid;

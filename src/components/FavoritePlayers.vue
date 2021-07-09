@@ -7,6 +7,7 @@
         :imageUrl="p.image"
         :position="p.position"
         :src="p.image"
+        :teamName="p.team_name"
         :key="p.name">
     </PlayerPreview>
   </div>
@@ -32,10 +33,18 @@ export default {
           "http://localhost:3003/users/favoritePlayers",
         );
         const players = response.data;
+        console.log("aaaaaaaaaaaa")
+        console.log(typeof (response.data) !== 'string')
+        if (typeof (response.data) !== 'string')          
+        {
         this.players = [];
         this.players.push(...players);
+        
+        }
       } catch (error) {
         console.log(error);
+        // this.$root.toast("Favorite Games", error.response.data, "alert");
+
       }
     }
   }, 

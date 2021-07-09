@@ -21,7 +21,7 @@
           Username length should be between 3-8 characters long
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-          Username alpha
+          Username must contain letters only
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -40,9 +40,9 @@
         <b-form-invalid-feedback v-if="!$v.form.firstName.required">
           First Name is required
         </b-form-invalid-feedback>
-        <!-- <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
-          firstName alpha
-        </b-form-invalid-feedback> -->
+        <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+          First Name must contain letters only
+        </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
@@ -61,9 +61,9 @@
         <b-form-invalid-feedback v-if="!$v.form.lastName.required">
           Last Name is required
         </b-form-invalid-feedback>
-        <!-- <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
-          lastName alpha
-        </b-form-invalid-feedback> -->
+        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+          Last Name must contain letters only
+        </b-form-invalid-feedback>
       </b-form-group>
 
 
@@ -100,8 +100,8 @@
           Password is required
         </b-form-invalid-feedback>
         <b-form-text v-else-if="$v.form.password.$error" text-variant="info">
-          Your password should be <strong>strong</strong>. <br />
-          For that, your password should be also:
+         <strong> Your password should be strong. <br />
+          For that, your password should be also:</strong>
         </b-form-text>
           <b-form-invalid-feedback
           v-if="$v.form.password.required && !$v.form.password.length"
@@ -257,10 +257,12 @@ export default {
         required
       },
       firstName: {
-        required
+        required,
+        alpha
       },
       lastName: {
-        required
+        required,
+        alpha
       },
       password: {
         required,
@@ -277,7 +279,9 @@ export default {
         email
       },
       imageUrl: {
-        required
+        required,
+        length: (p) => minLength(1)(p) && maxLength(255)(p),
+
       }
     }
   },
@@ -342,5 +346,11 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 500px;
+    align-items: right;
+    border-style: solid;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color:rgb(6, 51, 29);
+  background-color: #e6e6e6;
 }
 </style>

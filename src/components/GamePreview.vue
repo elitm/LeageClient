@@ -28,7 +28,7 @@
       <a v-if="!(guestTeamScore == undefined || guestTeamScore == null)"> guest score: {{ guestTeamScore }}</a>
       <br>
       <b-button v-if="events" @click="showEvents = !showEvents">Show events</b-button>
-      <b-button v-if="this.$root._data.store.username !== undefined" @click="addFavGame(id)" class="btn btn-info btn-sm">Add to Favorites</b-button>
+      <b-button v-if="this.$root._data.store.username !== undefined" @click="addFavGame(id)" class="btn btn-info btn-sm">Add to Favorites👍</b-button>
       </ul>
         </div>
         </b-col>
@@ -102,7 +102,6 @@ export default {
   } ,
   methods: {
     async addFavGame(gameId){
-     // check if game is already in players favorites 
      try {
        console.log("add favorite game")
         this.axios.defaults.withCredentials = true;
@@ -112,9 +111,13 @@ export default {
             gameID: gameId
           }
         );
+       this.$root.toast("Add to Favorites", "game added to favorites successfully", "success");
+
       } catch (error) {
         console.log("error in add favorite game")
-        console.log(error);
+        console.log(error.response);
+        this.$root.toast("Add Favorite Game Failed", error.response.data, "warning");
+
       }
     },
 

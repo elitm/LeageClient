@@ -35,7 +35,7 @@ export default {
         guestId: "",
         date:"",
         field: "",
-        referee: "" // get rid of this in backend (i think)
+        referee: "" 
 
     };
   },
@@ -52,15 +52,15 @@ export default {
             visitor_team_id: this.guestId,
             game_date: this.date.replace("T", " "),
             field_name: this.field,
-            referee_id: "2" //   get rid of this in backend (i think)
+            referee_id: "2" 
 
           }
         );
+      this.$root.toast("Add Game", "game added successfully", "success");
+
       } 
       catch (error) {
         console.log("error in add game")
-        this.$root.toast("AddGame", error.response.data.errors, "error");
-
         console.log(error);
       }
   }

@@ -54,6 +54,7 @@
             :imageUrl="p.image"
             :position="p.position"
             :src="p.image"
+            :teamName="p.team_name"
             :key="p.name">
         </PlayerPreview>
       </b-row> 
@@ -122,7 +123,7 @@ export default {
 <style>
 .team-full-details .team-title {
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: 35px;
   color:  rgb(79, 146, 115);
   background-color: rgb(255, 255, 255);

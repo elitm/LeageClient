@@ -65,10 +65,14 @@ export default {
             type: this.type
           }
         );
+     this.$root.toast("Add Event", "event added successfully", "success");
+
       } 
       catch (error) {
         console.log("error in add event")
         console.log(error);
+        this.$root.toast("", error.response.data, "warning");
+
       }
   }
   },

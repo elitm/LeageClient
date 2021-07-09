@@ -9,7 +9,7 @@
     <img :src= imageUrl > 
     <!-- <p> {{ imageUrl}} </p> -->
     <p> position: {{ position }} </p>
-    <p> teamName: {{ teamName }} </p> 
+    <p> team: {{ teamName }} </p> 
     </div>
     </div>
 </template>
@@ -49,8 +49,8 @@ export default {
   display: inline-block;
   max-width: 19rem;
   min-width: 19rem;
-  max-height: 17rem;
-  min-height: 17rem;
+  max-height: 19rem;
+  min-height: 19rem;
   position: relative;
   margin: 10px 10px;
   border-style: solid;

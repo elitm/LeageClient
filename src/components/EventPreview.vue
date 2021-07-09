@@ -46,10 +46,13 @@ props:{
 </script>
 
 <style lang="scss" scoped>
-  .table .events-table {
-    // max-width: 12rem ;
-    text-overflow: ellipsis !important;
-  //   table-layout: fixed;
-  //   width: 50%;
+  .events-table {
+  align-items: right;
+    border-style: solid;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color:rgb(6, 51, 29);
+  background-color: #e6e6e6;
   }
+
 </style>

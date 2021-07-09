@@ -12,6 +12,7 @@
       :hostTeamScore="g.local_team_score"
       :guestTeamScore="g.visitor_team_score"
       :field="g.field"
+      :events="g.events"
       :key="g.game_id"></GamePreview>
   </div>
 </template>

@@ -45,10 +45,15 @@ export default {
             visitor_team_score: this.guestScore
           }
         );
+       this.$root.toast("Add score", "scores updated successfully", "success");
+
       } 
       catch (error) {
         console.log("error in add score")
+        console.log(error.response);
         console.log(error);
+        this.$root.toast("Add Score Failed", error.response.data, "danger");
+
       }
   }
   },
