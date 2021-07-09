@@ -52,7 +52,7 @@ export default {
         console.log("error in add score")
         console.log(error.response);
         console.log(error);
-        this.$root.toast("Add Score Failed", error.response.data, "danger");
+        this.$root.toast("Error", error.response.data, "danger");
 
       }
   }

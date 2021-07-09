@@ -71,7 +71,7 @@ export default {
       catch (error) {
         console.log("error in add event")
         console.log(error);
-        this.$root.toast("", error.response.data, "warning");
+        // this.$root.toast("", error.response.data, "warning");
 
       }
   }

@@ -62,6 +62,8 @@ export default {
       catch (error) {
         console.log("error in add game")
         console.log(error);
+        this.$root.toast("Error", error.response.data, "danger");
+
       }
   }
   },
